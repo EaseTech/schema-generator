@@ -1,23 +1,24 @@
 schema-generator
 ================
 
-A light weight library for generating XSD files at runtime using Java classes
+A light weight library for generating XSD files at runtime using Java classes.
+If you need any help in generating XSD files using this library, do not hesitate to contact me at : anujkumar@easetech.org
 
 Some examples of generating schema
 =================================
 * Create a Schema with appinfo tag inside annotation tag 
-        Schema schema = new Schema();
-        schema.setId("id1");
-        schema.setXmlLang("XMLLANG");
-        Annotation annotation = new Annotation();
-        annotation.setId("Anuj Kumar");
-        AppInfo info = new AppInfo();
-        info.setContent("This is a simple App Info");
-        info.setSource("java");
 
-        annotation.getAppInfo().add(info);
-        schema.setAnnotation(annotation);
-        System.out.println(fillTemplate(schema));
+         Schema schema = new Schema();
+         schema.setId("id1");
+         schema.setXmlLang("XMLLANG");
+         Annotation annotation = new Annotation();
+         annotation.setId("Anuj Kumar");
+         AppInfo info = new AppInfo();
+         info.setContent("This is a simple App Info");
+         info.setSource("java");
+         annotation.getAppInfo().add(info);
+         schema.setAnnotation(annotation);
+         System.out.println(XSDGenerator.generateSchema(schema));
         
 The above Code will generate the XSD as :
 
@@ -39,7 +40,7 @@ The above Code will generate the XSD as :
         	documentation.setContent("This is the content");
         	annotation.getDocumentation().add(documentation);
         	schema.setAnnotation(annotation);
-        	System.out.println(fillTemplate(schema));
+        	System.out.println(XSDGenerator.generateSchema(schema));
     	}
 
 The above code will generate the XSD as :
@@ -69,6 +70,7 @@ The above code will generate the XSD as :
         	ComplexType rootComplexType = XSDUtil.generateComplexType(
             	"simpleList", element);
         	schema.getComplexType().add(rootComplexType);
+        	System.out.println(XSDGenerator.generateSchema(schema));
         	
 The above code will generate the XSD as :
 
@@ -90,6 +92,9 @@ The above code will generate the XSD as :
 				</xsd:complexType>
 			</xsd:schema>
 
+* If you want to save the generated XSD in a file at a specific location then you can use the API:
+
+		saveSchema(String schemaString, String path, String nameOfSchemaFile , Boolean deleteFileIfAlreadyPresent)
 
 You can create any complex XSD using only Java classes and with some knowledge of XSD notations.
 Note that it is easier to use the methods in XSDUtil class as they are taking care of lot of things 
