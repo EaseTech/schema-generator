@@ -6,18 +6,18 @@ A light weight library for generating XSD files at runtime using Java classes
 Some examples of generating schema
 =================================
 * Create a Schema with appinfo tag inside annotation tag 
-        Schema schema = new Schema();
-        schema.setId("id1");
-        schema.setXmlLang("XMLLANG");
-        Annotation annotation = new Annotation();
-        annotation.setId("Anuj Kumar");
-        AppInfo info = new AppInfo();
-        info.setContent("This is a simple App Info");
-        info.setSource("java");
 
-        annotation.getAppInfo().add(info);
-        schema.setAnnotation(annotation);
-        System.out.println(fillTemplate(schema));
+         Schema schema = new Schema();
+         schema.setId("id1");
+         schema.setXmlLang("XMLLANG");
+         Annotation annotation = new Annotation();
+         annotation.setId("Anuj Kumar");
+         AppInfo info = new AppInfo();
+         info.setContent("This is a simple App Info");
+         info.setSource("java");
+         annotation.getAppInfo().add(info);
+         schema.setAnnotation(annotation);
+         System.out.println(fillTemplate(schema));
         
 The above Code will generate the XSD as :
 
