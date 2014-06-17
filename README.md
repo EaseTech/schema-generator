@@ -1,7 +1,8 @@
 schema-generator
 ================
 
-A light weight library for generating XSD files at runtime using Java classes
+A light weight library for generating XSD files at runtime using Java classes.
+If you need any help in generating XSD files using this library, do not hesitate to contact me at : anujkumar@easetech.org
 
 Some examples of generating schema
 =================================
