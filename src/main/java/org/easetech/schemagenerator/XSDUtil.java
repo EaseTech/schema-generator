@@ -63,16 +63,17 @@ public final class XSDUtil {
         }
     }
     
-    public static Attribute getAttribute(String name , QName type , UseValues use, String _default) {
-        Attribute attribute = new Attribute();
+    public static Attribute getAttribute(String name , QName type , UseValues use, String _default , String elementName) {
+        Attribute attribute = new Attribute();       
         attribute.setName(name);
         attribute.setType(type);
         attribute.setUse(use);
-        attribute.setDefault(_default);
+        String finaldefaultValue = _default == null ? null : elementName == null ? _default : elementName.concat("@").concat(_default);
+        attribute.setDefault(finaldefaultValue);
+
         return attribute;
     }
-    
-    
+
    public static Element generateElement(String name, String type , String minOccurs , String maxOccurs) {
        Element element = generateElement(name, type);
        element.setMinOccurs(new BigInteger(minOccurs));
